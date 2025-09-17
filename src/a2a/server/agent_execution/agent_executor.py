@@ -42,3 +42,18 @@ class AgentExecutor(ABC):
             context: The request context containing the task ID to cancel.
             event_queue: The queue to publish the cancellation status update to.
         """
+
+    @abstractmethod
+    async def resume(
+        self, context: RequestContext, event_queue: EventQueue
+    ) -> None:
+        """Request the agent to resume a canceled task.
+
+        The agent should attempt to resume the task identified by the task_id
+        in the context and publish a `TaskStatusUpdateEvent` with state
+        `TaskState.working` to the `event_queue`.
+
+        Args:
+            context: The request context containing the task ID to resume.
+            event_queue: The queue to publish the working status update to.
+        """
