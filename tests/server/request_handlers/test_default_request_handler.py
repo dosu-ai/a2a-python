@@ -81,6 +81,9 @@ class DummyAgentExecutor(AgentExecutor):
     async def cancel(self, context: RequestContext, event_queue: EventQueue):
         pass
 
+    async def resume(self, context: RequestContext, event_queue: EventQueue):
+        pass
+
 
 # Helper to create a simple task for tests
 def create_sample_task(
@@ -791,6 +794,9 @@ class HelloAgentExecutor(AgentExecutor):
         await updater.complete()
 
     async def cancel(self, context: RequestContext, event_queue: EventQueue):
+        pass
+
+    async def resume(self, context: RequestContext, event_queue: EventQueue):
         pass
 
 
